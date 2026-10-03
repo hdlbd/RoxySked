@@ -25,19 +25,20 @@ jobs:
           java-version: "17"
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v4
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK packages
+        run: |
+          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v6
         with:
           gradle-version: "8.10"
 
-      - name: Clean Gradle Cache
-        run: rm -rf ~/.gradle/caches/
-
       - name: Build debug APK
-       run: gradle :app:assembleDebug --stacktrace --no-daemon --max-workers=2
-        
+        run: gradle :app:assembleDebug --stacktrace --no-daemon --max-workers=2
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
