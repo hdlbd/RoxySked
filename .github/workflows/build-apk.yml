@@ -3,7 +3,7 @@ name: Build Roxy sked APK
 on:
   workflow_dispatch:
   push:
-branches:
+    branches:
       - main
       - master
 
@@ -45,4 +45,3 @@ jobs:
           name: RoxySked-debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk
           retention-days: 14
-         
