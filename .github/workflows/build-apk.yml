@@ -3,7 +3,7 @@ name: Build Roxy sked APK
 on:
   workflow_dispatch:
   push:
-fz:
+branches:
       - main
       - master
 
